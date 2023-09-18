@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.SpringBootMybatis.Mapper.UserMapper">
+    <!--namespace根据自己需要创建的的mapper的路径和名称填写-->
+    <insert id="addUser" parameterType="com.example.SpringBootMybatis.Domain.User">
+        INSERT INTO user(name, address)
+        values (#{name}, #{address});
+    </insert>
+    <delete id="deleteUser" parameterType="com.example.SpringBootMybatis.Domain.User">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+    <update id="updateUser" parameterType="com.example.SpringBootMybatis.Domain.User">
+        update user
+        set name=#{name},
+            address=#{address}
+        where id = #{id};
+    </update>
+    <select id="detailUser"  resultType="com.example.SpringBootMybatis.Domain.User">
+        select * from springboot_mybatis.user where id=#{id}
+    </select>
+    <select id="List"  resultMap="userResultMap">
+        select * from springboot_mybatis.user
+    </select>
+    <resultMap id="userResultMap" type="com.example.SpringBootMybatis.Domain.User">
+        <id column="id" property="id" />
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="address" property="address" />
+    </resultMap>
+</mapper>
