@@ -85,8 +85,6 @@ public class UserController {
     @ResponseBody
     public List<User> detailUser() {
         List<User> list = userService.List();
-        System.out.println(list);
-        System.out.println("----------------------");
         return list;
     }
 }
